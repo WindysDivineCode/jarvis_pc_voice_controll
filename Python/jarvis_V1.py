@@ -28,16 +28,18 @@ model = whisper.load_model("base.en")
 def transcribe(file):
     result = model.transcribe(file, language="en")
     return result["text"]
+
 # ---------- AI ----------
 def ask_ai(prompt):
     response = chat(
-        model="llama3",
+        model="qwen2.5:14b",
         messages=[{"role": "user", "content": prompt}]
     )
     return response["message"]["content"]
 
 # ---------- MAIN LOOP ----------
-print("Jarvis started. Press any key to stop.")
+print("Jarvis started.")
+print("Press esc to stop.")
 
 while True:
     if keyboard.is_pressed("esc"):
